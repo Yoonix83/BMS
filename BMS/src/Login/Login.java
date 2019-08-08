@@ -14,6 +14,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import DAO.DAO_login;
+import DTO.DTO_emp;
+import DTO.DTO_pro;
 import DTO.DTO_std;
 
 import javax.swing.JPasswordField;
@@ -24,27 +26,27 @@ public class Login extends JFrame implements ActionListener {
 	private final ButtonGroup lGroup = new ButtonGroup(); //여러 버튼 중 하나의 버튼만 선택할 수 있게 하기 위해 버튼그룹 클래스로 묶어버린다.
 	private JTextField Id_tf; // JFrame 아이디 입력할 네모칸
 	private JPasswordField Pw_tf; // JFrame 비번 입력할 네모칸 *** 로 표시됨
-	JButton login, find, register; // 로그인, ID/PW 찾기, 등록 버튼
-	JRadioButton stdLB, profLB, mngLB; // 라디오 버튼
+	JButton login, find, register; // 로그인, PW 찾기, 등록 버튼
+	JRadioButton stdRB, profRB, empRB; // 라디오 버튼
 
 	public Login() {
 		setTitle("로그인 "); // JFrame 제목
 		getContentPane().setLayout(null); // 현재 Pane의 레이아웃(배치관리자)은  자유롭게 설정할 것이기 때문에 null 값으로 설정
 
-		stdLB = new JRadioButton("학생"); // 학생
-		lGroup.add(stdLB);
-		stdLB.setBounds(187, 45, 60, 37); // setBounds 버튼의 위치 설정 (or setSize, setLocation 두가지를 같이 설정해야함)
-		getContentPane().add(stdLB); // 현재 ContentPane 에 추가 하겠다는 의미 함수
+		stdRB = new JRadioButton("학생"); // 학생
+		lGroup.add(stdRB);
+		stdRB.setBounds(187, 45, 60, 37); // setBounds 버튼의 위치 설정 (or setSize, setLocation 두가지를 같이 설정해야함)
+		getContentPane().add(stdRB); // 현재 ContentPane 에 추가 하겠다는 의미 함수
 
-		profLB = new JRadioButton("교수"); // 교수
-		lGroup.add(profLB);
-		profLB.setBounds(267, 45, 60, 37);
-		getContentPane().add(profLB);
+		profRB = new JRadioButton("교수"); // 교수
+		lGroup.add(profRB);
+		profRB.setBounds(267, 45, 60, 37);
+		getContentPane().add(profRB);
 
-		mngLB = new JRadioButton("관리자"); // 관리자
-		lGroup.add(mngLB);
-		mngLB.setBounds(348, 45, 82, 37);
-		getContentPane().add(mngLB);
+		empRB = new JRadioButton("관리자"); // 관리자
+		lGroup.add(empRB);
+		empRB.setBounds(348, 45, 82, 37);
+		getContentPane().add(empRB);
 
 		JLabel lid = new JLabel("아이디");
 		lid.setBounds(174, 128, 57, 15);
@@ -73,7 +75,7 @@ public class Login extends JFrame implements ActionListener {
 		login.addActionListener(this); // addActionListener ActionListener를 구현(implements)하는 아무 인자가 오면 된다
 		                               // 여기서 this는 ActionListener를 implements 받는 Login 클래스 자기자신을 말하는 것이다.
 		
-		find = new JButton("ID/PW 찾기");
+		find = new JButton("PW 찾기");
 		find.setBounds(242, 263, 111, 37);
 		getContentPane().add(find);
 		find.addActionListener(this);
@@ -97,6 +99,8 @@ public class Login extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) { //ActionListener 가 동작할때 반드시 나와야되는 함수 , 버튼 눌렸을때 동작함수
 
 		DTO_std dto_std = new DTO_std();
+		DTO_pro dto_pro = new DTO_pro();
+		DTO_emp dto_emp = new DTO_emp();
 		DAO_login dao_lg = new DAO_login();
 
 		
@@ -104,33 +108,71 @@ public class Login extends JFrame implements ActionListener {
 		// 로그인 부분
 		if (e.getSource() == login) { // login 버튼 누른게 맞는지 확인
 
-			if (stdLB.isSelected() == true) { // 학생 라디오버튼 클릭 된건지 확인 
+			if (stdRB.isSelected() == true) { // 학생 라디오버튼 클릭 된건지 확인 
 
 				dto_std = dao_lg.select_std_num(Id_tf.getText()); // std 테이블, 아이디
 				
-			
-
 				if (Id_tf.getText().equals(dto_std.get_stdNum())) { // -- text 값과 디비 name 값 비교
-
-					
+	
 					if (String.valueOf(Pw_tf.getPassword()).equals(dto_std.get_stdPw())) { //String.valueOf() : char 값을 string으로 변환
-						
-						
-						
-						JOptionPane.showMessageDialog(null, "반갑습니다. \t " + " \t " + dto_std.get_stdName() + "님 ^-^");
 
+						JOptionPane.showMessageDialog(null, "반갑습니다. \t " + " \t " + dto_std.get_stdName() + "님 ^-^");
 
 						dispose(); // 본인 창 닫기
 
 					}else {
 						JOptionPane.showMessageDialog(null, " 비번 을 다시 확인하여 주십시요.^-^");
-					} // if (String.valueOf(Pw_tf.getPassword()).equals(dto_std.get_stdPw())) -- END
+					} 
 					
 				} // if (Id_tf.getText().equals(dto_std.get_stdNum())) -- END
 				
-			}//if (stdLB.isSelected() == true) -- END
+			}//if (stdRB.isSelected() == true) -- END
+			else if (profRB.isSelected() == true) { // 교수 확인 
+
+				dto_pro = dao_lg.select_pro_num(Id_tf.getText()); 
+				
+				if (Id_tf.getText().equals(dto_pro.get_proNum())) {
+					
+					if (String.valueOf(Pw_tf.getPassword()).equals(dto_pro.get_proPw())) {
+						
+						JOptionPane.showMessageDialog(null, "반갑습니다. \t " + " \t " + dto_pro.get_proName() + "님 ^-^");
+
+						dispose(); //  창 닫기
+
+						}else {
+							JOptionPane.showMessageDialog(null, " 비번 을 다시 확인하여 주십시요.^-^");
+						}
+					
+					}//if (Id_tf.getText().equals(dto_pro.get_proNum()))  -- END
+				
+			}//else if (profRB.isSelected() == true) -- END
+			else if (empRB.isSelected() == true) { // 직원 확인 
+
+				dto_emp = dao_lg.select_emp_num(Id_tf.getText()); 
+
+				if (Id_tf.getText().equals(dto_emp.get_empNum())) {
+
+					if (String.valueOf(Pw_tf.getPassword()).equals(dto_emp.get_empPw())) {
+						
+						JOptionPane.showMessageDialog(null, "반갑습니다. \t " + " \t " + dto_emp.get_empName() + "님 ^-^");
+
+						dispose(); //  창 닫기
+
+						}else {
+							JOptionPane.showMessageDialog(null, " 비번 을 다시 확인하여 주십시요.^-^");
+						}
+					}//if (Id_tf.getText().equals(dto_emp.get_empNum())) -- END
+				
+			}//else if (empRB.isSelected() == true) -- END
 			
-		} //if (e.getSource() == login) -- END
+		}//if (e.getSource() == login) -- END
+		else if(e.getSource() == find) {
+			
+			new Find_Main();
+			
+			dispose();
+		}
+		
 		
 	}// public void actionPerformed(ActionEvent e) -- END
 	

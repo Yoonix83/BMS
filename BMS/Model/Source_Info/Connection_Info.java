@@ -27,10 +27,5 @@ public class Connection_Info {
 		return con;
 	}
 	
-//	public static void main(String[] args) throws SQLException {
-//		Connection_Info c_info = new Connection_Info();
-//		System.out.println(c_info.con());
-//		
-//	}
 
 }
