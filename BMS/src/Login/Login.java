@@ -24,7 +24,7 @@ import javax.swing.JPasswordField;
 public class Login extends JFrame implements ActionListener {
 
 	private final ButtonGroup lGroup = new ButtonGroup(); //여러 버튼 중 하나의 버튼만 선택할 수 있게 하기 위해 버튼그룹 클래스로 묶어버린다.
-	private JTextField Id_tf; // JFrame 아이디 입력할 네모칸
+	private JTextField Num_tf; // JFrame 아이디 입력할 네모칸
 	private JPasswordField Pw_tf; // JFrame 비번 입력할 네모칸 *** 로 표시됨
 	JButton login, find, register; // 로그인, PW 찾기, 등록 버튼
 	JRadioButton stdRB, profRB, empRB; // 라디오 버튼
@@ -48,19 +48,19 @@ public class Login extends JFrame implements ActionListener {
 		empRB.setBounds(348, 45, 82, 37);
 		getContentPane().add(empRB);
 
-		JLabel lid = new JLabel("아이디");
-		lid.setBounds(174, 128, 57, 15);
-		getContentPane().add(lid);
+		JLabel lnum = new JLabel("번호");
+		lnum.setBounds(187, 129, 57, 15);
+		getContentPane().add(lnum);
 
 		JLabel lpw = new JLabel("비번");
-		lpw.setBounds(184, 195, 32, 15);
+		lpw.setBounds(187, 196, 32, 15);
 		getContentPane().add(lpw);
 
 		// 아이디text
-		Id_tf = new JTextField();
-		Id_tf.setBounds(293, 125, 126, 21);
-		getContentPane().add(Id_tf);
-		Id_tf.setColumns(10);
+		Num_tf = new JTextField();
+		Num_tf.setBounds(293, 125, 126, 21);
+		getContentPane().add(Num_tf);
+		Num_tf.setColumns(10);
 
 		// 비번text
 		Pw_tf = new JPasswordField();
@@ -110,9 +110,9 @@ public class Login extends JFrame implements ActionListener {
 
 			if (stdRB.isSelected() == true) { // 학생 라디오버튼 클릭 된건지 확인 
 
-				dto_std = dao_lg.select_std_num(Id_tf.getText()); // std 테이블, 아이디
+				dto_std = dao_lg.select_std_num(Num_tf.getText()); // std 테이블, 아이디
 				
-				if (Id_tf.getText().equals(dto_std.get_stdNum())) { // -- text 값과 디비 name 값 비교
+				if (Num_tf.getText().equals(dto_std.get_stdNum())) { // -- text 값과 디비 name 값 비교
 	
 					if (String.valueOf(Pw_tf.getPassword()).equals(dto_std.get_stdPw())) { //String.valueOf() : char 값을 string으로 변환
 
@@ -124,14 +124,14 @@ public class Login extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(null, " 비번 을 다시 확인하여 주십시요.^-^");
 					} 
 					
-				} // if (Id_tf.getText().equals(dto_std.get_stdNum())) -- END
+				} // if (Num_tf.getText().equals(dto_std.get_stdNum())) -- END
 				
 			}//if (stdRB.isSelected() == true) -- END
 			else if (profRB.isSelected() == true) { // 교수 확인 
 
-				dto_pro = dao_lg.select_pro_num(Id_tf.getText()); 
+				dto_pro = dao_lg.select_pro_num(Num_tf.getText()); 
 				
-				if (Id_tf.getText().equals(dto_pro.get_proNum())) {
+				if (Num_tf.getText().equals(dto_pro.get_proNum())) {
 					
 					if (String.valueOf(Pw_tf.getPassword()).equals(dto_pro.get_proPw())) {
 						
@@ -143,14 +143,14 @@ public class Login extends JFrame implements ActionListener {
 							JOptionPane.showMessageDialog(null, " 비번 을 다시 확인하여 주십시요.^-^");
 						}
 					
-					}//if (Id_tf.getText().equals(dto_pro.get_proNum()))  -- END
+					}//if (Num_tf.getText().equals(dto_pro.get_proNum()))  -- END
 				
 			}//else if (profRB.isSelected() == true) -- END
 			else if (empRB.isSelected() == true) { // 직원 확인 
 
-				dto_emp = dao_lg.select_emp_num(Id_tf.getText()); 
+				dto_emp = dao_lg.select_emp_num(Num_tf.getText()); 
 
-				if (Id_tf.getText().equals(dto_emp.get_empNum())) {
+				if (Num_tf.getText().equals(dto_emp.get_empNum())) {
 
 					if (String.valueOf(Pw_tf.getPassword()).equals(dto_emp.get_empPw())) {
 						
@@ -161,7 +161,7 @@ public class Login extends JFrame implements ActionListener {
 						}else {
 							JOptionPane.showMessageDialog(null, " 비번 을 다시 확인하여 주십시요.^-^");
 						}
-					}//if (Id_tf.getText().equals(dto_emp.get_empNum())) -- END
+					}//if (Num_tf.getText().equals(dto_emp.get_empNum())) -- END
 				
 			}//else if (empRB.isSelected() == true) -- END
 			
@@ -171,7 +171,13 @@ public class Login extends JFrame implements ActionListener {
 			new Find_Main();
 			
 			dispose();
+			
+		}else if (e.getSource() == register) { // 가입
+			
+			new Register();
+			
 		}
+
 		
 		
 	}// public void actionPerformed(ActionEvent e) -- END
