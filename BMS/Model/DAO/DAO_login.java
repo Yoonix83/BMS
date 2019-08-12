@@ -86,7 +86,7 @@ public class DAO_login<dto> {
 	
 	// -- 로그인 정보 부분_START
 	 // 학생 번호 매징
-	public DTO_std select_std_num(String id) { // 학생 아이디 매칭 문
+	public DTO_std select_std_num(String stdNum) { // 학생 아이디 매칭 문
 
 		String sql = "SELECT * FROM student WHERE stdNum = ?";
 
@@ -94,7 +94,7 @@ public class DAO_login<dto> {
 
 			pstmt = con_info.con().prepareStatement(sql);
 
-			pstmt.setString(1, id); // 학생 id 매칭
+			pstmt.setString(1, stdNum); // 학생 id 매칭
 
 			rs = pstmt.executeQuery(); // 실행 커리 결과 값 객체 (rs)
 
@@ -109,7 +109,7 @@ public class DAO_login<dto> {
 			
 		} catch (Exception e) {
 			
-			JOptionPane.showMessageDialog(null, "아이디를 다시 확인하여 주십시요.^-^");
+			JOptionPane.showMessageDialog(null, "학번을 다시 확인하여 주십시요.^-^");
 			
 		}
 
@@ -118,7 +118,7 @@ public class DAO_login<dto> {
 	}
 	
 	 // 교수 번호 매징
-		public DTO_pro select_pro_num(String id) { 
+		public DTO_pro select_pro_num(String proNum) { 
 
 			String sql = "SELECT * FROM professor WHERE proNum = ?";
 
@@ -126,7 +126,7 @@ public class DAO_login<dto> {
 
 				pstmt = con_info.con().prepareStatement(sql);
 
-				pstmt.setString(1, id); 
+				pstmt.setString(1, proNum); 
 
 				rs = pstmt.executeQuery(); 
 
@@ -141,7 +141,7 @@ public class DAO_login<dto> {
 
 			} catch (Exception e) {
 
-				JOptionPane.showMessageDialog(null, "아이디를 다시 확인하여 주십시요.^-^");
+				JOptionPane.showMessageDialog(null, "교수번호를 다시 확인하여 주십시요.^-^");
 				
 			}
 
@@ -150,7 +150,7 @@ public class DAO_login<dto> {
 		}
 		
 		// 직원 번호 매징
-				public DTO_emp select_emp_num(String id) { 
+				public DTO_emp select_emp_num(String empNum) { 
 
 					String sql = "SELECT * FROM employee WHERE empNum = ?";
 
@@ -158,7 +158,7 @@ public class DAO_login<dto> {
 
 						pstmt = con_info.con().prepareStatement(sql);
 
-						pstmt.setString(1, id); 
+						pstmt.setString(1, empNum); 
 
 						rs = pstmt.executeQuery(); 
 
@@ -173,7 +173,7 @@ public class DAO_login<dto> {
 
 					} catch (Exception e) {
 
-						JOptionPane.showMessageDialog(null, "아이디를 다시 확인하여 주십시요.^-^");
+						JOptionPane.showMessageDialog(null, "직원번호를 다시 확인하여 주십시요.^-^");
 						
 					}
 
@@ -201,7 +201,7 @@ public class DAO_login<dto> {
 						
 					} catch (Exception e) {
 						
-						JOptionPane.showMessageDialog(null, "[ 학번 ]를 다시 확인하여 주십시요.^-^");
+						JOptionPane.showMessageDialog(null, "학번을 다시 확인하여 주십시요.^-^");
 						
 					}
 
@@ -227,7 +227,7 @@ public class DAO_login<dto> {
 						
 					} catch (Exception e) {
 						
-						JOptionPane.showMessageDialog(null, "[ 번호 ]를 다시 확인하여 주십시요.^-^");
+						JOptionPane.showMessageDialog(null, "교수번호를 다시 확인하여 주십시요.^-^");
 						
 					}
 

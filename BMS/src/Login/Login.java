@@ -17,6 +17,7 @@ import DAO.DAO_login;
 import DTO.DTO_emp;
 import DTO.DTO_pro;
 import DTO.DTO_std;
+import Pro.Professor_Page;
 
 import javax.swing.JPasswordField;
 
@@ -136,7 +137,9 @@ public class Login extends JFrame implements ActionListener {
 					if (String.valueOf(Pw_tf.getPassword()).equals(dto_pro.get_proPw())) {
 						
 						JOptionPane.showMessageDialog(null, "반갑습니다. \t " + " \t " + dto_pro.get_proName() + "님 ^-^");
-
+						
+						new Professor_Page(dto_pro.get_proNum(), dto_pro.get_proMajor());//로그인 한 교수 번호 값 넘겨주기
+						
 						dispose(); //  창 닫기
 
 						}else {
