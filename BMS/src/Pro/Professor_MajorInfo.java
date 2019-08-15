@@ -17,46 +17,47 @@ import javax.swing.JButton;
 
 public class Professor_MajorInfo extends JPanel implements ActionListener{
 	
-	private JTable diTable;
-	JButton search0;
+	private JTable dtTable;
+	JButton search;
 	
-	DefaultTableModel model;
+	DefaultTableModel model; // 이름/직위/전공/전화번호 구분할  테이블
 	
 	String title[] = {"이 름", "직 위", "전 공", "전화번호"};
 	
-	String proMajor_pp;//professor_Page 에서 받아온 major 정보
+	String proMajor; // Professor_Page 에서 가져온 proMajor 정보 담기
 	
 	private JTable table;
-	public Professor_MajorInfo(String proMajor) {
+	
+	public Professor_MajorInfo(String proMajor_pp) {//professor_Page 에서 받아온 major 정보
 			
-		this.proMajor_pp = proMajor;
+		this.proMajor = proMajor_pp;
 		
 		setLayout(null);
 		
-		JPanel chang = new JPanel(); //chang deptinfo 창
-		chang.setBounds(0, 0, 494, 327);
-		add(chang);
-		chang.setLayout(null);
+		JPanel panel = new JPanel(); 
+		panel.setBounds(0, 0, 494, 327);
+		add(panel);
+		panel.setLayout(null);
 		
 		model = new DefaultTableModel(title, 0);
-		diTable = new JTable(model);
-		JScrollPane di_scr = new JScrollPane(diTable);
+		dtTable = new JTable(model);
+		JScrollPane di_scr = new JScrollPane(dtTable);
 		
 		di_scr.setBounds(12, 26, 444, 239);
-		chang.add(di_scr);
+		panel.add(di_scr);
 		
-		search0 = new JButton("조회"); //search 조회버튼 이름
-		search0.setBounds(380, 280, 65, 29);
-		chang.add(search0);
-		search0.addActionListener(this);
+		search = new JButton("조회"); //search 조회버튼 이름
+		search.setBounds(380, 280, 65, 29);
+		panel.add(search);
+		search.addActionListener(this);
 
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		DAO_pro dao_pro = new DAO_pro();
-		DTO_pro dto_pro = new DTO_pro();
-		if(e.getSource()==search0){
-			// deptinfo 이름 직위 과목 나오는 버튼 설정 search
+		
+		if(e.getSource()==search){
+			// 
 			String arr[] = new String[4];
 
 			int cnt = model.getRowCount();
@@ -64,16 +65,17 @@ public class Professor_MajorInfo extends JPanel implements ActionListener{
 				model.removeRow(0);
 			}
 
-			ArrayList<DTO_pro> list = dao_pro.selectALL(proMajor_pp);
+			ArrayList<DTO_pro> list = dao_pro.selectALL(proMajor);
 			for (DTO_pro dto : list) {
 				arr[0] = dto.get_proName();
 				arr[1] = dto.get_proGrade();
 				arr[2] = dto.get_proMajor();
 				arr[3] = dto.get_proPhone();
-				model = (DefaultTableModel) diTable.getModel();
+				model = (DefaultTableModel) dtTable.getModel();
 				model.addRow(arr);
 			}
 			
 		}
+		
 	}
 }

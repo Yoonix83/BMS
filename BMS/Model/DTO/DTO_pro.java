@@ -8,6 +8,15 @@ public class DTO_pro {
 	String _proMajor;
 	String _proPw;
 	String _proPhone;
+	String _crsName;
+	
+	//+ crsName Ãß°¡
+	public String get_crsName() {
+		return _crsName;
+	}
+	public void set_crsName(String _crsName) {
+		this._crsName = _crsName;
+	}
 	
 	public String get_proNum() {
 		return _proNum;

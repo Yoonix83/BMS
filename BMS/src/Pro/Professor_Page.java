@@ -32,15 +32,15 @@ public class Professor_Page extends JFrame implements ActionListener {
 	
 	private JPanel main_content; //내용물 출력에 들어가는 패널
 
-	String pNum_lg; // 로그인에서 받아온 교수번호 저장공간
-	String pMajor_lg;
+	String pNum; // 로그인에서 받아온 교수번호 저장공간
+	String pMajor;
 	
 	
 
-	public Professor_Page(String pNum, String pMajor) // Login.java 에서 매개변수로 교수 번호, 교수 전공 값을 받아온다
+	public Professor_Page(String pNum_lg, String pMajor_lg) // Login.java 에서 매개변수로 교수 번호, 교수 전공 값을 받아온다
 	{
-		this.pNum_lg = pNum;
-		this.pMajor_lg = pMajor;
+		this.pNum = pNum_lg;
+		this.pMajor = pMajor_lg;
 		
 		getContentPane().setFont(new Font("굴림", Font.PLAIN, 10));
 		getContentPane().setLayout(null);
@@ -55,7 +55,7 @@ public class Professor_Page extends JFrame implements ActionListener {
 		DAO_pro dao_pro = new DAO_pro();
 		DTO_pro dto_pro = new DTO_pro();
 		
-		dto_pro = dao_pro.select_pro_num(pNum_lg);
+		dto_pro = dao_pro.select_pro_info(pNum);
 		//  해당 교수 번호 정보 불러오기 --END
 		
 
@@ -144,12 +144,18 @@ public class Professor_Page extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == gradeMng) { // 성적관리
+			
+			main_content.removeAll();
+			Professor_About_Grade ag = new Professor_About_Grade(pNum);
+			main_content.add(ag, BorderLayout.CENTER);
+			setVisible(true);
 
 		}
 
 		if (e.getSource() == majorInfo) { // 학과정보
+			
 			main_content.removeAll();
-			Professor_MajorInfo pro_major = new Professor_MajorInfo(pMajor_lg);
+			Professor_MajorInfo pro_major = new Professor_MajorInfo(pMajor);
 			main_content.add(pro_major, BorderLayout.CENTER);
 			setVisible(true);
 		}
