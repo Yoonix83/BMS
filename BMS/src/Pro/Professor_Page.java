@@ -19,8 +19,6 @@ import java.awt.BorderLayout;
 
 public class Professor_Page extends JFrame implements ActionListener {
 
-
-
 	 JTextField pMajor_tf; //학과:
 	 JTextField pName_tf; //이름:
 	 JTextField pNum_tf; //교수번호:
@@ -35,8 +33,6 @@ public class Professor_Page extends JFrame implements ActionListener {
 	String pNum; // 로그인에서 받아온 교수번호 저장공간
 	String pMajor;
 	
-	
-
 	public Professor_Page(String pNum_lg, String pMajor_lg) // Login.java 에서 매개변수로 교수 번호, 교수 전공 값을 받아온다
 	{
 		this.pNum = pNum_lg;
@@ -134,9 +130,9 @@ public class Professor_Page extends JFrame implements ActionListener {
 		main_content.setLayout(new BorderLayout(0, 0));
 
 		setLocation(50, 100);
-		setPreferredSize(new Dimension(600, 400));
+		setPreferredSize(new Dimension(600, 400)); // frame size
 		setDefaultCloseOperation(EXIT_ON_CLOSE); // [x]로 닫을 시 프로그램 완전 종료  EXIT ON CLOSE  =  System.exit(0); 같다
-		pack();
+		pack();//setPreferredSize 에 맞춰 모든 panel들의 높이 넓이 값 자동으로 조정
 		setVisible(true);
 	}
 

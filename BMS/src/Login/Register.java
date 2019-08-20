@@ -156,14 +156,13 @@ public class Register extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	
 
 		if (e.getSource() == loginWd) { // 로그인창 버튼
 			
 			new Login();
 			
 			dispose();
-		
+	
 		}
 
 		if (e.getSource() == regist) { // 등록 버튼
@@ -173,15 +172,15 @@ public class Register extends JFrame implements ActionListener{
 				if (!("선택").equals(year_combo.getSelectedItem().toString())
 						&& !("선택").equals(major_combo.getSelectedItem().toString())) { // 학년/전공 ComboBox 가 "선택"으로 정하지 않고 무엇이든 값을 선택했다면
 
-					// - insert std dao (학생)실행 부분
+					// - insert_std_info (학생)실행 부분
 					dao_lg.insert_std_info(rNum_tf.getText(), rName_tf.getText(),year_combo.getSelectedItem().toString(),
 							major_combo.getSelectedItem().toString(), rPw_tf.getText(), rPhone_tf.getText());
 
-					// id 값으로 name을 찾아와 alert 창에 가입환영 메세지를 띄워준다.
+					// num 값으로 name을 찾아와 alert 창에 가입환영 메세지를 띄워준다.
 					JOptionPane.showMessageDialog(null,
-							dao_lg.select_std_num(rNum_tf.getText()).get_stdName() + "님 KOSEA의 학생이 되신 걸 환영합니다. ^- ^/");
+							dao_lg.select_std_num(rNum_tf.getText()).get_stdName() + "님 우리대학 의 학생이 되신 걸 환영합니다. ^- ^/");
 
-					dispose(); // 기존 화면을 닫고 원래 화면으로 보이게 하기위해 
+					dispose();
 					
 				} else {
 
@@ -189,6 +188,10 @@ public class Register extends JFrame implements ActionListener{
 
 				}
 
+			}else {
+				
+				JOptionPane.showMessageDialog(null, "학생, 교수, 관리자 선택을 다시 확인해주세요 !!");
+				
 			}
 		} // 등록 END --
 

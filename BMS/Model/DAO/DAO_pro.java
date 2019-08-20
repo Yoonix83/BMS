@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import DTO.DTO_mark;
 import DTO.DTO_pro;
-
 import Source_Info.Connection_Info;
 
 public class DAO_pro {
@@ -83,7 +82,8 @@ public class DAO_pro {
 
 	}
 	
-	public void update_pro_info(DTO_pro dto, String pNum_lg) // 업데이트(정보수정)
+	// 업데이트(정보수정)
+	public void update_pro_info(DTO_pro dto, String pNum_lg) 
 	{
 		String sql = "UPDATE prof SET proPw=?, proPhone=? WHERE proNum=?";
 
@@ -99,7 +99,8 @@ public class DAO_pro {
 		}
 	}
 	
-	public ArrayList<DTO_mark> select_mark(String proNum)// 성적관리(Assign_grades) 학번, 이름, 학년, 학과, 과목, 성적 조회
+	// 성적관리(Professor_About_Grade) 학번, 이름, 학년, 학과, 과목, 성적 조회
+	public ArrayList<DTO_mark> select_mark(String proNum)
 
 	{
 		ArrayList<DTO_mark> list = new ArrayList<DTO_mark>();
@@ -129,6 +130,27 @@ public class DAO_pro {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	// 성적등록(Professor_About_Grade) 학생 성적 UPDATE
+	public DTO_mark update_grade(DTO_mark dto) 
+	{
+
+		String sql = "UPDATE takecourse SET tkMark = ? WHERE tk_crsName = ? AND tk_stdNum = ?";
+		try {
+			
+			pstmt = con_info.con().prepareStatement(sql);
+			
+			pstmt.setString(1, dto.get_tkMark());
+			pstmt.setString(2, dto.get_crsName());
+			pstmt.setString(3, dto.get_stdNum());
+			
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 	
 }

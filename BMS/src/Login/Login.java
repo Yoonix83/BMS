@@ -173,7 +173,7 @@ public class Login extends JFrame implements ActionListener {
 			
 			new Find_Main();
 			
-			dispose();
+			dispose(); //현재 프레임 종료
 			
 		}else if (e.getSource() == register) { // 가입
 			
