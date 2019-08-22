@@ -26,7 +26,6 @@ public class Professor_MajorInfo extends JPanel implements ActionListener{
 	
 	String proMajor; // Professor_Page 에서 가져온 proMajor 정보 담기
 	
-	private JTable table;
 	
 	public Professor_MajorInfo(String proMajor_pp) {//professor_Page 에서 받아온 major 정보
 			
@@ -39,9 +38,15 @@ public class Professor_MajorInfo extends JPanel implements ActionListener{
 		add(panel);
 		panel.setLayout(null);
 		
-		model = new DefaultTableModel(title, 0);
+		model = new DefaultTableModel(title, 0) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		};
 		dtTable = new JTable(model);
-		JScrollPane di_scr = new JScrollPane(dtTable);
+		JScrollPane di_scr = new JScrollPane(dtTable); // 많은 정보 출력시 scroll bar 기능
 		
 		di_scr.setBounds(12, 26, 444, 239);
 		panel.add(di_scr);

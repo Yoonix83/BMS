@@ -52,7 +52,8 @@ public class DAO_pro {
 	
 	public DTO_pro select_pro_info(String pNum) {  // 로그인 교수 정보 출력
 
-		String sql = "SELECT pro.proNum, pro.proName, pro.proMajor, pro.proGrade, pro.proPw, proPhone, crs.crsName FROM professor pro, course crs WHERE pro.proNum = crs.proNum AND pro.proNum = ?";
+		String sql = "SELECT pro.proNum, pro.proName, pro.proMajor, pro.proGrade, pro.proPw, proPhone, crs.crsName FROM professor pro, course crs "
+				+ "WHERE pro.proNum = crs.proNum AND pro.proNum = ?";
 
 		try {
 

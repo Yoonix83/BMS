@@ -23,9 +23,9 @@ public class Professor_Page extends JFrame implements ActionListener {
 	 JTextField pName_tf; //이름:
 	 JTextField pNum_tf; //교수번호:
 
-	JButton gradeMng; //grade mng 클릭하는 버튼
-	JButton majorInfo; // dept info 클릭하는 버튼
-	JButton pInfo; // professor info 클릭하는 버튼
+	JButton gradeMng; //성적관리 클릭하는 버튼
+	JButton majorInfo; // 학과정보 클릭하는 버튼
+	JButton pInfo; // 교수정보수정 클릭하는 버튼
 	JButton lOut; // 로그아웃 버튼
 	
 	private JPanel main_content; //내용물 출력에 들어가는 패널
@@ -157,7 +157,7 @@ public class Professor_Page extends JFrame implements ActionListener {
 		}
 
 		if (e.getSource() == pInfo) { //정보수정
-			
+			// 미구현 19.08.21
 		}
 		
 		if (e.getSource() == lOut) { //로그아웃
