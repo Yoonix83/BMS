@@ -18,6 +18,7 @@ import DTO.DTO_emp;
 import DTO.DTO_pro;
 import DTO.DTO_std;
 import Pro.Professor_Page;
+import Std.Student_Page;
 
 import javax.swing.JPasswordField;
 
@@ -118,7 +119,9 @@ public class Login extends JFrame implements ActionListener {
 					if (String.valueOf(Pw_tf.getPassword()).equals(dto_std.get_stdPw())) { //String.valueOf() : char 값을 string으로 변환
 
 						JOptionPane.showMessageDialog(null, "반갑습니다. \t " + " \t " + dto_std.get_stdName() + "님 ^-^");
-
+						
+						new Student_Page(dto_std.get_stdNum());
+						
 						dispose(); // 본인 창 닫기
 
 					}else {

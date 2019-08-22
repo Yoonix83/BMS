@@ -8,7 +8,28 @@ public class DTO_mark {
 	String _stdMajor; 
 	String _crsName;
 	String _tkMark;
+	String _proName;
+	String _crsNum;
+	String _crsCredit;
 	
+	public String get_proName() {
+		return _proName;
+	}
+	public void set_proName(String _proName) {
+		this._proName = _proName;
+	}
+	public String get_crsNum() {
+		return _crsNum;
+	}
+	public void set_crsNum(String _crsNum) {
+		this._crsNum = _crsNum;
+	}
+	public String get_crsCredit() {
+		return _crsCredit;
+	}
+	public void set_crsCredit(String _crsCredit) {
+		this._crsCredit = _crsCredit;
+	}
 	public String get_stdNum() {
 		return _stdNum;
 	}

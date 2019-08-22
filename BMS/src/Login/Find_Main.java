@@ -98,8 +98,8 @@ public class Find_Main extends JFrame implements ActionListener {
 		}else if (e.getSource() == find) { // 찾기버튼
 			if (stdRB.isSelected() == true) { // -- 학생 비교
 
-				dto_std = dao_lg.select_std_find(fNum_tf.getText()); // std 테이블
-
+				dto_std = dao_lg.select_std_num(fNum_tf.getText());
+				
 					if (fName_tf.getText().equals(dto_std.get_stdName())) {
 
 						JOptionPane.showMessageDialog(null, "반갑습니다. \t " + " \t " + dto_std.get_stdName() + "님 ^-^");
@@ -118,7 +118,7 @@ public class Find_Main extends JFrame implements ActionListener {
 
 			else if (profRB.isSelected() == true) { // -- 교수 비교
 
-				dto_pro = dao_lg.select_pro_find(fNum_tf.getText()); // prof 테이블
+				dto_pro = dao_lg.select_pro_num(fNum_tf.getText()); // prof 테이블
 
 					if (fName_tf.getText().equals(dto_pro.get_proName())) {
 

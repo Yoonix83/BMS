@@ -182,60 +182,6 @@ public class DAO_login<dto> {
 				}
 				// 로그인 -- END
 				
-				//--  비밀번호 찾기
-				public DTO_std select_std_find(String num) { // 학생 번호 매칭 문
-
-					String sql = "SELECT stdName, stdPw FROM student WHERE stdNum = ?";
-
-					try {
-
-						pstmt = con_info.con().prepareStatement(sql);
-
-						pstmt.setString(1, num); // 학생 번호
-
-						rs = pstmt.executeQuery();
-
-						rs.next();
-						dto_std.set_stdName(rs.getString("stdName"));
-						dto_std.set_stdPw(rs.getString("stdPw"));
-						
-					} catch (Exception e) {
-						
-						JOptionPane.showMessageDialog(null, "학번을 다시 확인하여 주십시요.^-^");
-						
-					}
-
-					return dto_std;
-
-				}
-
-				public DTO_pro select_pro_find(String num) { // 교수 번호 매칭 문
-
-					String sql = "SELECT proName, proPw FROM professor WHERE proNum = ?";
-				
-					try {
-
-						pstmt = con_info.con().prepareStatement(sql);
-
-						pstmt.setString(1, num); // 교수 번호
-
-						rs = pstmt.executeQuery();
-
-						rs.next();
-						dto_pro.set_proName(rs.getString("proName"));
-						dto_pro.set_proPw(rs.getString("proPw"));
-						
-					} catch (Exception e) {
-						
-						JOptionPane.showMessageDialog(null, "교수번호를 다시 확인하여 주십시요.^-^");
-						
-					}
-
-					return dto_pro;
-
-				}
-				// 비밀번호 찾기 -- END
-
 				
 				// 학생 등록 부분
 				public void insert_std_info(String num, String name, String grade, String major, String pw, String phone) {
