@@ -191,17 +191,10 @@ public class Student_Takecourse extends JPanel implements ActionListener{
 						// 추가 된 값 전역 list 에 추가
 						addList.add(arr[0]);
 						addList.add(dto_takecourse.get_crsNum());
-						System.out.println(addList);
-//										System.out.println("model.getRowCount() "+model.getRowCount());
-//										System.out.println("model.getValueAt(model.getRowCount(), 0) :"+model.getValueAt(model.getRowCount()-1, 0).toString());
-										//System.out.println("model add 이후 : "+addList.get(0) + " : " + addList.get(1) + " : " + addList.get(2) );
-										
+									
 							if(model.getRowCount()>1) {
 								for(int i = 0 ; i <= model.getRowCount()-2 ; i++) {
 											
-//											System.out.println("for i " + i);
-//											System.out.println("for model.getRowCount() "+model.getRowCount());
-									
 									if(course_box.getSelectedItem().toString().equals(model.getValueAt(i, 0))){
 												
 										model.removeRow(model.getRowCount()-1);
