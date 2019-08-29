@@ -131,7 +131,10 @@ public class Student_Page extends JFrame implements ActionListener {
 	
 		if (e.getSource() == classRegi) { // 수강신청 버튼
 			
-			
+			panel_2.removeAll();
+			Student_Takecourse stk = new Student_Takecourse(stdNum);
+			panel_2.add(stk, BorderLayout.CENTER);
+			setVisible(true);
 			
 		}
 		
@@ -146,8 +149,7 @@ public class Student_Page extends JFrame implements ActionListener {
 			Student_Grade_chk chk = new Student_Grade_chk(stdNum);
 			panel_2.add(chk, BorderLayout.CENTER);
 			setVisible(true);
-			
-			
+	
 		}
 		
 		if (e.getSource() == sInfo) { // 정보수정 버튼

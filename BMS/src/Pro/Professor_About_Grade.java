@@ -15,8 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.DAO_pro;
-import DTO.DTO_mark;
-import DTO.DTO_pro;
+import DTO.DTO;
 
 import javax.swing.JTextField;
 
@@ -42,7 +41,7 @@ public class Professor_About_Grade extends JPanel implements ActionListener {
 	String pNum; //로그인에서 받아온 넘버
 	
 	DAO_pro dao_pro = new DAO_pro();
-	DTO_pro dto_pro = new DTO_pro();
+	DTO dto_pro = new DTO();
 	
 	private JTextField crsName_tf;
 	private JLabel lblNewLabel_1;
@@ -133,13 +132,13 @@ public class Professor_About_Grade extends JPanel implements ActionListener {
 				
 			}
 
-			ArrayList<DTO_mark> list = dao_pro.select_mark(pNum);
-			for (DTO_mark dto : list) {
+			ArrayList<DTO> list = dao_pro.select_mark(pNum);
+			for (DTO dto_mark : list) {
 				
-				table_list[0] = dto.get_stdNum();
-				table_list[1] = dto.get_stdName();
-				table_list[2] = dto.get_stdGrade();
-				table_list[3] = dto.get_tkMark();
+				table_list[0] = dto_mark.get_stdNum();
+				table_list[1] = dto_mark.get_stdName();
+				table_list[2] = dto_mark.get_stdGrade();
+				table_list[3] = dto_mark.get_tkMark();
 				
 				model = (DefaultTableModel) gd_dt_model.getModel(); // 
 				model.addRow(table_list);
@@ -157,7 +156,7 @@ public class Professor_About_Grade extends JPanel implements ActionListener {
 		if (e.getSource() == gd_commit) // 등록 버튼
 		{
 
-			DTO_mark dto_mark = new DTO_mark();
+			DTO dto_mark = new DTO();
 			
 			dto_mark.set_tkMark((String) gd_dt_model.getValueAt(gd_dt_model.getSelectedRow(), 3));
 			dto_mark.set_crsName(dto_pro.get_crsName());

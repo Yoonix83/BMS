@@ -6,7 +6,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.DAO_std;
-import DTO.DTO_mark;
+import DTO.DTO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,14 +69,14 @@ public class Student_Grade_chk extends JPanel implements ActionListener {
 
 				}
 				
-				ArrayList<DTO_mark> list  = dao_std.select_mark(stdNum);
+				ArrayList<DTO> list  = dao_std.select_mark(stdNum);
 				
-				for (DTO_mark dto : list) {
+				for (DTO dto_mark : list) {
 					
-					table_list[0] = dto.get_crsName();
-					table_list[1] = dto.get_crsCredit();
-					table_list[2] = dto.get_tkMark();
-					table_list[3] = dto.get_proName();
+					table_list[0] = dto_mark.get_crsName();
+					table_list[1] = dto_mark.get_crsCredit();
+					table_list[2] = dto_mark.get_tkMark();
+					table_list[3] = dto_mark.get_proName();
 				
 					model = (DefaultTableModel) table.getModel();
 					model.addRow(table_list);

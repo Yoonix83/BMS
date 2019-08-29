@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import DAO.DAO_pro;
-import DTO.DTO_pro;
+import DTO.DTO;
 import Login.Login;
 
 import java.awt.Font;
@@ -49,7 +49,7 @@ public class Professor_Page extends JFrame implements ActionListener {
 		
 		//-- 해당 교수 번호 정보 불러오기
 		DAO_pro dao_pro = new DAO_pro();
-		DTO_pro dto_pro = new DTO_pro();
+		DTO dto_pro = new DTO();
 		
 		dto_pro = dao_pro.select_pro_info(pNum);
 		//  해당 교수 번호 정보 불러오기 --END

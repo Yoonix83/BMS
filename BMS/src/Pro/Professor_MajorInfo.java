@@ -4,7 +4,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.DAO_pro;
-import DTO.DTO_pro;
+import DTO.DTO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,12 +70,12 @@ public class Professor_MajorInfo extends JPanel implements ActionListener{
 				model.removeRow(0);
 			}
 
-			ArrayList<DTO_pro> list = dao_pro.selectALL(proMajor);
-			for (DTO_pro dto : list) {
-				arr[0] = dto.get_proName();
-				arr[1] = dto.get_proGrade();
-				arr[2] = dto.get_proMajor();
-				arr[3] = dto.get_proPhone();
+			ArrayList<DTO> list = dao_pro.selectALL(proMajor);
+			for (DTO dto_pro : list) {
+				arr[0] = dto_pro.get_proName();
+				arr[1] = dto_pro.get_proGrade();
+				arr[2] = dto_pro.get_proMajor();
+				arr[3] = dto_pro.get_proPhone();
 				model = (DefaultTableModel) dtTable.getModel();
 				model.addRow(arr);
 			}

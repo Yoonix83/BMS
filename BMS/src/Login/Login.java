@@ -14,9 +14,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import DAO.DAO_login;
-import DTO.DTO_emp;
-import DTO.DTO_pro;
-import DTO.DTO_std;
+import DTO.DTO;
+
 import Pro.Professor_Page;
 import Std.Student_Page;
 
@@ -100,9 +99,9 @@ public class Login extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) { //ActionListener 가 동작할때 반드시 나와야되는 함수 , 버튼 눌렸을때 동작함수
 
-		DTO_std dto_std = new DTO_std();
-		DTO_pro dto_pro = new DTO_pro();
-		DTO_emp dto_emp = new DTO_emp();
+		DTO dto_std = new DTO();
+		DTO dto_pro = new DTO();
+		DTO dto_emp = new DTO();
 		DAO_login dao_lg = new DAO_login();
 
 		

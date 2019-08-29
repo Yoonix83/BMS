@@ -15,8 +15,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import DAO.DAO_login;
-import DTO.DTO_mjr;
-import DTO.DTO_std;
+import DTO.DTO;
+
 
 public class Register extends JFrame implements ActionListener{
 	
@@ -33,8 +33,8 @@ public class Register extends JFrame implements ActionListener{
 	JComboBox year_combo, major_combo;
 
 	DAO_login dao_lg = new DAO_login();
-	DTO_std dto_std = new DTO_std();
-	DTO_mjr dto_mjr = new DTO_mjr();
+	DTO dto_std = new DTO();
+	DTO dto_mjr = new DTO();
 	
 	
 	public Register() {
@@ -129,9 +129,9 @@ public class Register extends JFrame implements ActionListener{
 		getContentPane().add(major_combo);
 		major_combo.addItem("선택");
 
-		ArrayList<DTO_mjr> list = dao_lg_list.select_mjr_info(); // DAO 에서 list 타입으로 담긴 dto 정보를 ArrayList<> list 에 다시 담는다
+		ArrayList<DTO> list = dao_lg_list.select_mjr_info(); // DAO 에서 list 타입으로 담긴 dto 정보를 ArrayList<> list 에 다시 담는다
 		
-		for (DTO_mjr dto_mjr : list) { // list 문에 있는 정보수 만큼 for 문을 이용해 Name 값을 ComboBox 에 차례로 넣는다.
+		for (DTO dto_mjr : list) { // list 문에 있는 정보수 만큼 for 문을 이용해 Name 값을 ComboBox 에 차례로 넣는다.
 
 			major_combo.addItem(dto_mjr.get_mjrName());
 		}

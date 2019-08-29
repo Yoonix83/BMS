@@ -13,8 +13,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import DAO.DAO_login;
-import DTO.DTO_pro;
-import DTO.DTO_std;
+import DTO.DTO;
+
 
 public class Find_Main extends JFrame implements ActionListener {
 	
@@ -87,8 +87,8 @@ public class Find_Main extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		DAO_login dao_lg = new DAO_login();
-		DTO_std dto_std = new DTO_std();
-		DTO_pro dto_pro = new DTO_pro();
+		DTO dto_std = new DTO();
+		DTO dto_pro = new DTO();
 
 		if (e.getSource() == loginWd) { // 로그인창 버튼 : 로그인 화면으로 돌아가기
 			

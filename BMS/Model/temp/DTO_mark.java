@@ -1,4 +1,4 @@
-package DTO;
+package temp;
 
 public class DTO_mark {
 	
