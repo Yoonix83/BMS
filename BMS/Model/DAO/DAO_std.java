@@ -83,7 +83,8 @@ public class DAO_std {
 			
 		}
 		
-		public DTO select_course_list(String crsName) { // 특정 과목이름의 정보
+		// 특정 과목의 정보
+		public DTO select_course_list(String crsName) { 
 			
 			DTO dto_course = new DTO();
 				
@@ -111,6 +112,39 @@ public class DAO_std {
 			
 		}
 		
+		// 특정 학번의 수강신청 정보
+		public ArrayList<DTO> select_takecourse_list(String stdNum) { // "과목번호", "과목이름", "시수/학점", "담당교수" 
+			
+			ArrayList<DTO> list = new ArrayList<DTO>();
+			
+			
+			String sql = "SELECT tk.tk_crsName, tk.tk_crsNum, tk.tkMark, crs.proName " + 
+					"FROM takecourse tk, course crs WHERE tk.tk_crsNum = crs.crsNum AND tk.tk_stdNum = ? ORDER BY tk.tk_crsNum ASC";
+
+			try {
+				pstmt = con_info.con().prepareStatement(sql);
+				pstmt.setString(1, stdNum);
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					
+					DTO dto_takecourse = new DTO();
+	
+					dto_takecourse.set_crsNum(rs.getString("tk_crsNum")); 
+					dto_takecourse.set_crsName(rs.getString("tk_crsName"));
+					dto_takecourse.set_tkMark(rs.getString("tkMark"));
+					dto_takecourse.set_proName(rs.getString("proName"));				
+					
+					list.add(dto_takecourse);
+				}
+					
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		}
+		
 	//  수강 신청 Data 로직 
 		public void insert_course_add(String stdNum, String crsNum, String crsName){
 			String sql = "INSERT INTO `takecourse`(`tk_stdNum`,`tk_crsNum`,`tk_crsName`) VALUES(?,?,?)";
@@ -130,4 +164,24 @@ public class DAO_std {
 			
 	}
 	//  수강 신청 Data 로직 --
+		
+		// 수강 취소
+		public void delete_takecourse(String stdNum, String crsName) { // 업데이트(정보수정)
+
+			String query = "DELETE FROM takecourse WHERE tk_stdNum = ? AND tk_crsName = ?";
+
+			try {
+				pstmt = con_info.con().prepareStatement(query); // query문 수행
+				pstmt.setString(1, stdNum);
+				pstmt.setString(2, crsName);
+			
+				pstmt.executeUpdate();
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			}
+
+		}
 }

@@ -140,6 +140,11 @@ public class Student_Page extends JFrame implements ActionListener {
 		
 		if (e.getSource() == classChk) { // 수강조회 버튼
 			
+			panel_2.removeAll();
+			Student_Takecourse_chk stk_chk = new Student_Takecourse_chk(stdNum);
+			panel_2.add(stk_chk, BorderLayout.CENTER);
+			setVisible(true);
+			
 			
 		}
 		
