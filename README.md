@@ -1,17 +1,7 @@
-# BMS
+[![Build Status](https://dev.azure.com/git/git/_apis/build/status/git.git)](https://dev.azure.com/git/git/_build/latest?definitionId=11)
 
-JAVA / MySQL 기반의 학사관리 프로그램
-
-참여인원 : 1명
-
-참여자 : 윤수현
-
-
-환경(플래폼) : Window10 
-툴 : Eclipse(Version: 2018-12 (4.10.0) / Build id: 20181214-0600) 
-서버 : Tomcat 9.0
-언어 : JAVA
-DB : MySQL
-기타 : WindowBuilder( for JAVA GUI)  
-
-현재 1.0 버전 완료
+[INSTALL]: INSTALL
+[Documentation/gittutorial.txt]: Documentation/gittutorial.txt
+[Documentation/giteveryday.txt]: Documentation/giteveryday.txt
+[Documentation/gitcvs-migration.txt]: Documentation/gitcvs-migration.txt
+[Documentation/SubmittingPatches]: Documentation/SubmittingPatches
