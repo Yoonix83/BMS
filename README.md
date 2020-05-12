@@ -13,4 +13,4 @@ DB : MySQL
 기타 : WindowBuilder( for JAVA GUI)  	
 
 + 현재 1.0 버전 완료
-> JAVA 프로젝트 SQL 추출.sql : MYSQL DATA 
+> JAVA 프로젝트 SQL 추출.sql : MYSQL DATA 추출
